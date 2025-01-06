@@ -23,7 +23,7 @@ pipeline {
         }
         stage('Build') {
             steps {
-                dir("back-nex-sona"){
+                dir("back_nexus"){
                       sh "mvn clean install"
                       sh "docker build -t sona-nexus-app ."
 
@@ -41,7 +41,7 @@ pipeline {
         stage('SonarQube Analysis') {
             steps {
                 withSonarQubeEnv('sonar-server') {
-                    dir("back-nex-sona"){
+                    dir("back_nexus"){
                         sh 'mvn sonar:sonar'
                     }
                 }
@@ -50,7 +50,7 @@ pipeline {
 
         stage("Publish to Nexus Repository Manager") {
             steps {
-                 dir("back-nex-sona"){
+                 dir("back_nexus"){
 
                      script {
                         pom = readMavenPom file: "pom.xml";
