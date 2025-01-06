@@ -18,7 +18,7 @@ pipeline {
         }
         stage ("Clone repo"){
             steps {
-                sh "git clone https://github.com/MaBouz/back-nex-sona.git"
+                sh "git clone https://github.com/alahammami2/back_nexus.git"
             }
         }
         stage('Build') {
